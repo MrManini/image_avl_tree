@@ -1,4 +1,5 @@
 import os
+import graphviz as gv
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
 from Stack import Stack
@@ -406,3 +407,24 @@ class AVL(ABB):
         elif start_height > 1:
             self.__levels_recursive(node.left, start_height - 1)
             self.__levels_recursive(node.right, start_height - 1)
+    
+    # Hace un plot del arbol con graphviz
+    def plot(self):
+        dot = gv.Digraph()
+        dot.node(str(self.root.data))
+
+        # añade los nodos a graphviz
+        def addNodes(node):
+            if node.left:
+                dot.node(str(node.left))
+                dot.edge(str(node.data), str(node.left.data))
+                addNodes(node.left)
+            if node.right:
+                dot.node(str(node.right))
+                dot.edge(str(node.data), str(node.right.data))
+                addNodes(node.right)
+
+        addNodes(self.root)
+        dot.render("binary_tree", view = True, format = "png")
+
+

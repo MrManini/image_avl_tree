@@ -1,5 +1,4 @@
 import os
-import graphviz as graphviz
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
 from Stack import Stack

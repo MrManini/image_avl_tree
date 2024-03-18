@@ -338,53 +338,70 @@ class AVL(ABB):
     def delete(self, elem: Any, mode: bool = True) -> bool:
         p, dad = self.search(elem)
         if p is not None:
+            # Si ambos hijos del nodo 'p' son None (es decir, 'p' es un nodo hoja)
             if p.left is None and p.right is None:
+                # Si 'p' es el hijo izquierdo de 'dad'
                 if p == dad.left:
+                    # Asigna None al hijo izquierdo de 'dad', eliminando la referencia a 'p'
                     dad.left = None
                 else:
+                    # Si no, asigna None al hijo derecho de 'dad', eliminando la referencia a 'p'
                     dad.right = None
                 del p
             elif p.left is not None and p.right is None:
+                # Dado el caso de que el nodo 'p' tiene un hijo izquierdo pero no un hijo derecho
                 if p == dad.left:
                     dad.left = p.left
                 else:
                     dad.right = p.left
                 del p
             elif p.left is None and p.right is not None:
+                # Dado el caso de que el nodo 'p' tiene un hijo derecho pero no un hijo izquierdo
                 if p == dad.left:
                     dad.left = p.right
                 else:
                     dad.right = p.right
                 del p
             else:
+                # Implementacion tanto del metodo de predecesor como sucesor 
                 if mode:
+                    # Buscar el predecesor del nodo 'p' y su padre
                     pred, dad_pred = self.__pred(p)
                     p.data = pred.data
                     if pred.left is not None:
+                        # Asignar el hijo izquierdo del predecesor al hijo izquierdo del padre del predecesor
                         if dad_pred == p:
                             dad_pred.left = pred.left
+                            # Asignar el padre del predecesor a 'dad'
                             dad = dad_pred
                         else:
                             dad_pred.right = pred.left
                     else:
                         if dad_pred == p:
+                            # Asignar None al hijo izquierdo del padre del predecesor
                             dad_pred.left = None
+                            # Asignar el padre del predecesor a 'dad'
                             dad = dad_pred
                         else:
                             dad_pred.right = None
                     del pred
                 else:
+                    # Buscar el sucesor del nodo 'p' y su padre
                     sus, dad_sus = self.__sus(p)
                     p.data = sus.data
                     if sus.right is not None:
                         if dad_sus == p:
+                            # Asignar el hijo derecho del sucesor al hijo derecho del padre del sucesor
                             dad_sus.right = sus.right
+                             # Asignar el padre del sucesor a 'dad'
                             dad = dad_sus
                         else:
                             dad_sus.left = sus.right
                     else:
                         if dad_sus == p:
+                            # Asignar None al hijo derecho del padre del sucesor
                             dad_sus.right = None
+                            # Asignar el padre del sucesor a 'dad'
                             dad = dad_sus
                         else:
                             dad_sus.left = None

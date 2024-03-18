@@ -137,6 +137,7 @@ class ABB(Tree):
     
 class AVL(ABB):
 
+#Encontrar al nodo predecesor como sucesor dadas las condiciones del arbol AVL
     def __pred(self, node: "Node") -> Tuple["Node", "Node"]:
         p, dad = node.left, node
         while p.right is not None:
@@ -148,7 +149,8 @@ class AVL(ABB):
         while p.left is not None:
             p, dad = p.left, p
         return p, dad
-
+    
+#Desarrollo de las rotaciones utilizadas para el balanceo de unu nodo
     def __slr(self, node: "Node"):
         aux = node.right
         node.right = aux.left
@@ -169,9 +171,12 @@ class AVL(ABB):
         node.left = self.__slr(node.left)
         return self.__srr(node)
 
+#Encontrar la altura del arbol
     def height(self, node: "Node"):
+        #Inicializamos la altura en 0 
         left_height = 0
         right_height = 0
+        # Calcula la altura del subárbol izquierdo del nodo y la asigna a 'left_height'
         if node.left != None:
             left_height = self.height(node.left)
         if node.right != None:
@@ -258,14 +263,18 @@ class AVL(ABB):
 
     def __deletion_balance(self, p: "Node"):
         son = None
+        # Mientras el nodo p no sea None y su factor de balance sea menor a 2
         while p != None and abs(self.balance_factor(p)) < 2:
             son = p
             p = self.search_father(p.data)
         if p != None:
+            #Calcular el factor de balance del nodo padre 
             father = self.search_father(p.data)
             p_factor = self.balance_factor(p)
             if son != None:
+                #Calcular el factor de balanceo de nuestro nodo hijo 
                 son_factor = self.balance_factor(son)
+                #Dependiendo del valor del factor de balanceo encontrado se ejecuta la rotacion correspondiente
                 if p_factor == 2 and son_factor == 1:
                     correct_node = self.__slr(p)
                 elif p_factor == -2 and son_factor == -1:
@@ -275,10 +284,14 @@ class AVL(ABB):
                 elif p_factor == -2 and son_factor == 1:
                     correct_node = self.__dlrr(p)
                 else:
+                    #Si el hijo es el hijo izquierdo del padre 
                     if son == p.left:
+                       #Se asigna el hijo derecho de p a la hija 
                        daughter = p.right
                     else:
+                        #De no ser asi se asigna el hijo izquierdo del padre a la hija 
                         daughter = p.left
+                        #Se calcula el factor de balanceo de la hija y se hace la rotacion correspondiente
                     daughter_factor = self.balance_factor(daughter)
                     if p_factor == 2 and daughter_factor == 1:
                         correct_node = self.__slr(p)
@@ -302,6 +315,7 @@ class AVL(ABB):
                     correct_node = self.__drlr(p)
                 else:
                     correct_node = self.__dlrr(p)
+            #Si el nodo padre es = none considera como p, luego del balanceo aquel que reemplace al nodo padre se considera como la raiz 
             if father == None:
                 self.root = correct_node
             elif father.left == p:

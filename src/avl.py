@@ -1,11 +1,15 @@
 import os
 import graphviz as gv
+import pydot
+from subprocess import check_call
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
 from Stack import Stack
 from Queue import Queue
 from Node import Node
 PATH = Path(__file__).parent / 'data'
+direc = r"C:\Users\pipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages"
+os.environ["PATH"] += direc
 
 class Tree:
 

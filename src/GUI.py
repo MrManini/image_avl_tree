@@ -6,7 +6,7 @@ from Node import Node
 
 # Clase UI para crear la interfaz gráfica de TKinter
 class UI:
-    def __init__(self):
+    def __init__(self, graph: "AVL"):
         root = tk.Tk()
 
         root.geometry("600x500")

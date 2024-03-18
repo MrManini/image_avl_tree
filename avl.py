@@ -6,7 +6,11 @@ from Queue import Queue
 from Node import Node
 PATH = Path(__file__).parent / 'data'
 
-        
+
+class Pipe:
+    def __init__(self, root: "Node" = None) -> None:
+        self.root = root
+
 class Tree:
 
     def __init__(self, root: "Node" = None) -> None:

@@ -6,13 +6,6 @@ from Node import Node
 
 # Clase UI para crear la interfaz gráfica de TKinter
 class UI:
-    node = Node(1)
-    node2 = Node(2)
-    node3 = Node(3)
-    node4 = Node(4)
-    node5 = Node(5)
-
-    avl = AVL(node)
     def __init__(self):
         root = tk.Tk()
 

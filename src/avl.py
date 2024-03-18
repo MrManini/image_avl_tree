@@ -137,7 +137,7 @@ class ABB(Tree):
     
 class AVL(ABB):
 
-#Encontrar al nodo predecesor como sucesor dadas las condiciones del arbol AVL
+    # Encontrar al nodo predecesor como sucesor dadas las condiciones del arbol AVL
     def __pred(self, node: "Node") -> Tuple["Node", "Node"]:
         p, dad = node.left, node
         while p.right is not None:
@@ -150,7 +150,7 @@ class AVL(ABB):
             p, dad = p.left, p
         return p, dad
     
-#Desarrollo de las rotaciones utilizadas para el balanceo de unu nodo
+    # Desarrollo de las rotaciones utilizadas para el balanceo de un nodo
     def __slr(self, node: "Node"):
         aux = node.right
         node.right = aux.left
@@ -171,14 +171,15 @@ class AVL(ABB):
         node.left = self.__slr(node.left)
         return self.__srr(node)
 
-#Encontrar la altura del arbol
+    # Encontrar la altura del arbol
     def height(self, node: "Node"):
-        #Inicializamos la altura en 0 
+        # Inicializamos la altura en 0 
         left_height = 0
         right_height = 0
         # Calcula la altura del subárbol izquierdo del nodo y la asigna a 'left_height'
         if node.left != None:
             left_height = self.height(node.left)
+        # Calcula la altura del subárbol derecho del nodo y la asigna a 'right_height'
         if node.right != None:
             right_height = self.height(node.right)
         return max(left_height, right_height) + 1
@@ -196,6 +197,7 @@ class AVL(ABB):
             if p.right is not None:
                 q.add((p.right, lvl+1))
 
+    # Calcular el factor de balanceo dado la altura del subarbol 
     def balance_factor(self, node: "Node"):
         left_height = 0
         if node.left != None:
@@ -203,6 +205,7 @@ class AVL(ABB):
         right_height = 0
         if node.right != None:
             right_height = self.height(node.right)
+        # Se obtiene la diferencia entre el subarbol derecho e izquiero como valor del factor de balanceo
         return right_height - left_height
 
     def search_grandpa(self, data_s: Any):
@@ -220,16 +223,20 @@ class AVL(ABB):
                 return grandpa.right
             else:
                 return grandpa.left
-
+            
+    #Funcion para el balanceo de una insersion 
     def __insertion_balance(self, node: "Node"):
         p = self.search_father(node.data)
+        # Recorrer un nodo p hacia arriaba hasta encontrar un nodo cuyo factor de balanceo simbolice un desequilibrio
         while p != None and abs(self.balance_factor(p)) < 2:
             son = p
             p = self.search_father(p.data)
         if p != None:
+            # Calcular el factor de balanceo del nodo padre e hijo 
             father = self.search_father(p.data)
             p_factor = self.balance_factor(p)
             son_factor = self.balance_factor(son)
+            # Rotaciones correspondientes dado el factor 
             if p_factor == 2 and son_factor == 1:
                 correct_node = self.__slr(p)
             elif p_factor == -2 and son_factor == -1:
@@ -245,12 +252,15 @@ class AVL(ABB):
             else:
                 father.right = correct_node
 
+
     def insert(self, elem: Any) -> bool:
+        # Insertar el nodo dado que no tiene raiz  
         to_insert = Node(elem)
         if self.root is None:
             self.root = to_insert
             return True
         else:
+            # Insertar el nodo correspondiendo de su magnitud
             p, dad = self.search(elem)
             if p is None:
                 if elem < dad.data:

@@ -1,9 +1,10 @@
 import os
+import graphviz as graphviz
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
-from Stack import Stack
-from Queue import Queue
-from Node import Node
+from src.Stack import Stack
+from src.Queue import Queue
+from src.Node import Node
 PATH = Path(__file__).parent / 'data'
 
 class Tree:

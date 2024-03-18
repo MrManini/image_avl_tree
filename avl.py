@@ -1,66 +1,11 @@
 import os
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
+from Stack import Stack
+from Queue import Queue
+from Node import Node
 PATH = Path(__file__).parent / 'data'
 
-class Stack:
-
-    def __init__(self) -> None:
-        self.stack: List[Any] = []
-
-    def add(self, elem: Any) -> None:
-        self.stack.append(elem)
-
-    def remove(self) -> Any:
-        return self.stack.pop()
-
-    def is_empty(self) -> bool:
-        return len(self.stack) == 0
-
-class Queue:
-
-    def __init__(self) -> None:
-        self.queue: List[Any] = []
-
-    def add(self, elem: Any) -> None:
-        self.queue.append(elem)
-
-    def remove(self) -> Any:
-        return self.queue.pop(0)
-
-    def is_empty(self) -> bool:
-        return len(self.queue) == 0
-
-class Node:
-
-    def __init__(self, data: str) -> None:
-        self.data = data
-        self.type = self.get_type()
-        self.size = self.get_size()
-        self.left: Optional["Node"] = None
-        self.right: Optional["Node"] = None
-
-    def get_type(self) -> str:
-        data = self.data
-        if data[:4] == "bike":
-            return "bike"
-        elif data[:3] == "car":
-            return "cars"
-        elif data[:3] == "cat":
-            return "cats"
-        elif data[:3] == "dog":
-            return "dogs"
-        elif data[0] == "0":
-            return "flowers"
-        elif data[0] == "h":
-            return "horses"
-        else:
-            return "human"
-
-    def get_size(self):
-        file_name = PATH/self.type/self.data
-        file_stats = os.stat(file_name)
-        return file_stats.st_size
         
 class Tree:
 

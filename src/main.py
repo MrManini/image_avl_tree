@@ -1,8 +1,9 @@
-from src.avl import Tree, ABB, AVL
+from avl import Tree, ABB, AVL
 import graphviz as gv
+from GUI import UI
 
 def main() -> None:
-    return
+    ui = UI()
 
 
 if __name__ == '__main__':

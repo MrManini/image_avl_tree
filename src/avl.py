@@ -433,16 +433,16 @@ class AVL(ABB):
         # añade los nodos a graphviz
         def addNodes(node):
             if node.left:
-                dot.node(str(node.left))
+                dot.node(str(node.left.data))
                 dot.edge(str(node.data), str(node.left.data))
                 addNodes(node.left)
             if node.right:
-                dot.node(str(node.right))
+                dot.node(str(node.right.data))
                 dot.edge(str(node.data), str(node.right.data))
                 addNodes(node.right)
 
         addNodes(self.root)
-        dot.render("binary_tree", view = True, format = "png")
+        dot.render("binary_tree", view = True)
 
 T = AVL()
 T.add_all_nodes()

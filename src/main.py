@@ -8,7 +8,7 @@ def main() -> None:
     
     avl.insert("bike_001.bmp")
     avl.insert("bike_002.bmp")
-    avl.insert("bike_003.bmp")
+    avl.insert("bike_004.bmp")
 
     avl.plot()
 

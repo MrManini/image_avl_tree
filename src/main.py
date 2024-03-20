@@ -11,6 +11,7 @@ def main() -> None:
     avl.insert("bike_004.bmp")
 
     avl.plot()
+    gui = UI(avl)
 
 
 if __name__ == '__main__':

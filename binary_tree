@@ -2,6 +2,6 @@ digraph {
 	"bike_002.bmp"
 	"bike_001.bmp"
 	"bike_002.bmp" -> "bike_001.bmp"
-	<Node.Node object at 0x00000175663C8EB0>
+	"bike_004.bmp"
 	"bike_002.bmp" -> "bike_004.bmp"
 }

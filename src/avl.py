@@ -7,8 +7,7 @@ from Stack import Stack
 from Queue import Queue
 from Node import Node
 PATH = Path(__file__).parent / 'data'
-direc = r"C:\Users\pipe\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\LocalCache\local-packages\Python39\site-packages"
-os.environ["PATH"] += direc
+
 
 class Tree:
 
@@ -441,7 +440,15 @@ class AVL(ABB):
                 addNodes(node.right)
 
         addNodes(self.root)
-        dot.render("binary_tree", view = True)
+        dot.render("binary_tree", view = False, format = "png")
+        
+        #poppler_path = r"C:\Users\pipe\OneDrive\Documentos\Python Addons\poppler-24.02.0\Library\bin"
+        #pdf_path = r"C:\Users\pipe\OneDrive\Documentos\Universidad\Uninorte\Semestre 4\Estructura de Datos 2\Laboratorios\image_avl_tree\binary_tree.pdf"
+        #imgPath = r"C:\Users\pipe\OneDrive\Documentos\Universidad\Uninorte\Semestre 4\Estructura de Datos 2\Laboratorios\image_avl_tree"
+
+        #pngGraph = convert_from_path(pdf_path = pdf_path, poppler_path = poppler_path)
+        #pngGraph[0].save(os.path.join(imgPath, "binary_tree"), "JPEG")
+        
 
     def add_some_nodes(self):
         self.insert("dog.161.jpg")

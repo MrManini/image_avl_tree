@@ -1,6 +1,5 @@
 import os
 import graphviz as gv
-import pydot
 from subprocess import check_call
 from typing import Any, List, Optional, Tuple
 from pathlib import Path
@@ -453,25 +452,29 @@ class AVL(ABB):
         self.insert("dog.73.jpg")
         self.insert("rider-107.jpg")
         self.insert("bike_110.bmp")
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
-        self.insert()
+        self.insert("horse_9.jpg")
+        self.insert("carsgraz_197.bmp")
+        self.insert("carsgraz_100.bmp")
+        self.insert("rider-37.jpg")
+        self.insert("cat.72.jpg")
+        self.insert("0038.png")
+        self.insert("dog.60.jpg")
+        self.insert("bike_238.bmp")
+        self.insert("horse-198.jpg")
+        self.insert("0177.png")
+        self.insert("carsgraz_354.bmp")
+        self.insert("bike_072.bmp")
+        self.insert("rider-201.jpg")
+        self.insert("rider-125.jpg")
+        self.insert("cat.100.jpg")
+        self.insert("dog.165.jpg")
+        self.insert("horse-139.jpg")
+        self.insert("0130.png")
+
+    def del_som_nodes(self):
+        self.delete("horse-42.jpg")
+        self.delete("dog.161.jpg")
+        self.delete("carsgraz_177.bmp")
+        self.delete("rider-107.jpg")
+        self.delete("cat.142.jpg")
 

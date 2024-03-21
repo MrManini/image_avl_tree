@@ -7,6 +7,7 @@ from Stack import Stack
 from Queue import Queue
 from Node import Node
 PATH = Path(__file__).parent / 'data'
+PATHIMG = Path(__file__).parent.parent
 
 
 class Tree:
@@ -129,13 +130,15 @@ class ABB(Tree):
         nodes = []
         p, s = self.root, Stack()
         while p is not None or not s.is_empty():
-            if p is not None and p.type == type and lower_limit < p.size < upper_limit:
-                nodes.append(p)
+            if p is not None:
                 s.add(p)
+                if p.type == type and lower_limit < p.size < upper_limit:
+                    nodes.append(p)
                 p = p.left
             else:
                 p = s.remove()
                 p = p.right
+            
         return nodes
     
 class AVL(ABB):
@@ -440,7 +443,8 @@ class AVL(ABB):
                 addNodes(node.right)
 
         addNodes(self.root)
-        dot.render("binary_tree", view = False, format = "png")
+        dot.render("binary_tree1", view = True, format = "png", directory= PATHIMG)
+        c = 0
         
         #poppler_path = r"C:\Users\pipe\OneDrive\Documentos\Python Addons\poppler-24.02.0\Library\bin"
         #pdf_path = r"C:\Users\pipe\OneDrive\Documentos\Universidad\Uninorte\Semestre 4\Estructura de Datos 2\Laboratorios\image_avl_tree\binary_tree.pdf"
@@ -453,14 +457,14 @@ class AVL(ABB):
     def add_some_nodes(self):
         self.insert("dog.161.jpg")
         self.insert("0129.png")
-        self.insert("horse-42.png")
+        self.insert("horse-42.jpg")
         self.insert("bike_107.bmp")
         self.insert("cat.142.jpg")
         self.insert("dog.73.jpg")
         self.insert("rider-107.jpg")
         self.insert("bike_110.bmp")
-        self.insert("horse_9.jpg")
-        self.insert("carsgraz_197.bmp")
+        self.insert("horse-9.jpg")
+        self.insert("carsgraz_177.bmp")
         self.insert("carsgraz_100.bmp")
         self.insert("rider-37.jpg")
         self.insert("cat.72.jpg")
@@ -470,6 +474,8 @@ class AVL(ABB):
         self.insert("horse-198.jpg")
         self.insert("0177.png")
         self.insert("carsgraz_354.bmp")
+        self.insert("cat.153.jpg")
+        self.insert("carsgraz_127.bmp")
         self.insert("bike_072.bmp")
         self.insert("rider-201.jpg")
         self.insert("rider-125.jpg")

@@ -1,7 +1,0 @@
-digraph {
-	"bike_002.bmp"
-	"bike_001.bmp"
-	"bike_002.bmp" -> "bike_001.bmp"
-	"bike_004.bmp"
-	"bike_002.bmp" -> "bike_004.bmp"
-}
